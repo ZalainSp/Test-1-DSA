@@ -1,5 +1,6 @@
 #include <iostream>
 #include "BinaryTree.h" 
+#include <queue>
 using namespace std;    
 
 BinaryTree::BinaryTree(){
@@ -91,10 +92,42 @@ void BinaryTree::postorderTraversal(TreeNode* node) const{ //private helper func
     cout<<node->value<<endl; //output the node value
 }
 
-void BinaryTree::levelOrderTraversal() const{
-
+void BinaryTree::levelOrderTraversal() const{ //level order traversal function
     
+    if(root == nullptr){ //check if tree is empty
+        cout<<"The tree is empty"<<endl; //if empty output message and return
+        return;
+    }
+    queue <TreeNode*> q; //create a queue to store the nodes
+    q.push(root); //push the root node into a queue
+
+    while(!q.empty()) //while the queue is empty
+    {
+        int levelsize = q.size(); //get the size of the queue
+        for(int i =0; i<levelsize; i++){
+
+        TreeNode* current = q.front(); //get the node in front of the queue
+        q.pop(); //remove the node from the queue
+
+        cout<<current->value<<endl; //output the node value
+
+            if(i<levelsize -1){ //add comma between the values
+                cout<<", "; 
+            }
+
+        if(current->left != nullptr) //check if the left child node is not null
+        {
+            q.push(current->left); //push the left child node into the queue
+        }
+        if(current->right != nullptr) //check if the right node is not null
+        {
+            q.push(current->right); //push the right child node into the queue
+        }
+    }
+    cout<<endl; 
+ }
 }
+
 
 int BinaryTree::count() const{
 
