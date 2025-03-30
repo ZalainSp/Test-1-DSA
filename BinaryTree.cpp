@@ -49,6 +49,13 @@ void BinaryTree::inorderTraversal() const{
 
 void BinaryTree::preorderTraversal() const{
 
+    if(root == nullptr){
+        cout<<"The tree is empty"<<endl;
+        return;
+    }
+    cout<<root->value<<endl; 
+    preorderTraversal(root->left);
+    preorderTraversal(root->right);
     
 }
 
