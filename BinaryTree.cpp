@@ -130,13 +130,29 @@ void BinaryTree::levelOrderTraversal() const{ //level order traversal function
 
 
 int BinaryTree::count() const{
+    return count(root); //call the private helper function
+        
+    }
 
-    
+int BinaryTree::count(TreeNode* node) const{ //private helper function
+        
+    if(node == nullptr){ //check if the node is null
+        return 0; 
+    }
+    return 1 + count(node->left)+count(node->right); //return the counf of the nodes adding the root (1) and the left and right nodes
 }
 
 int BinaryTree::findHeight() const{ 
-
+    return findHeight(root); //call the private helper function
     
+}
+int BinaryTree::findHeight(TreeNode* node) const{
+    if(node == nullptr){ //check if the node is null
+        return 0;
+    }
+    int left = findHeight(node->left); //height of the left subtree
+    int right = findHeight(node->right); //hieght of the right subtree
+    return max(left,right); //return the max height betweeen the left and right subtrees
 }
 
 
