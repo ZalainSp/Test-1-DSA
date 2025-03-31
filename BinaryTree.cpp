@@ -10,10 +10,17 @@ BinaryTree::BinaryTree(){
 
 BinaryTree::~BinaryTree(){
     //destructor to delete all nodes in the tree
-    while (root) {
-        deleteNode(root,root->value);  //delete nodes one by one
-    }
+    destroyTree(root); //call the private helper function to delete all nodes in the tree
     
+}
+
+void BinaryTree::destroyTree(TreeNode* node){
+    if(node == nullptr){ //check if the node is null
+        return;
+    }
+    destroyTree(node->left); //delete left child node
+    destroyTree(node->right); //delete right child node
+    delete node; //delete the current node
 }
 
 void BinaryTree::insert(int value){

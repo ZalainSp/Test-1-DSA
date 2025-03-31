@@ -39,6 +39,8 @@ private:
     void levelOrderTraversal(TreeNode* node) const;
     int count(TreeNode* node) const;
     int findHeight(TreeNode* node) const;
+    void destroyTree(TreeNode* node);
+
 };
 
 #endif // BINARYTREE_H
