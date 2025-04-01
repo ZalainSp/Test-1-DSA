@@ -33,7 +33,7 @@ private:
 
     void insert(TreeNode*& node, int value);
     bool search(TreeNode* node, int value) const;
-    void deleteNode(TreeNode* node, int value);
+    void deleteNode(TreeNode*& node, int value);
     void inorderTraversal(TreeNode* node) const;
     void preorderTraversal(TreeNode* node) const;
     void postorderTraversal(TreeNode* node) const;

@@ -42,16 +42,24 @@ void BinaryTree::insert(TreeNode*& node, int value){ //private helper function
 }
 
 bool BinaryTree::search(int value) const{
-
-    
-
+search(root,value); //call the private helper function to search for the value in the tree
 }
+bool BinaryTree::search(TreeNode* node, int value) const{ //private helper function
 
+    if(node ==nullptr || node->value ==value){ //check if the node is null or if the value is found
+        return root;
+    }
+    if(value < node->value){
+        search(node -> left ,value); //check if value is less, if so go to left subtree
+    }
+    search(node->right,value); //check if value is greater, if so go to right subtree
+}
 
 void BinaryTree::deleteNode(int value){ //delete node function
 
     deleteNode(root,value); //call the private helper function to delete the node
     
+
 }
 
 void BinaryTree::deleteNode(TreeNode*& node,  int value){
@@ -79,7 +87,6 @@ deleteNode(node->right, temp->value);
 }
 }
 }
-
 
 void BinaryTree::inorderTraversal() const{ // call the private helper function
 
@@ -193,7 +200,7 @@ int BinaryTree::findHeight() const{
 }
 int BinaryTree::findHeight(TreeNode* node) const{
     if(node == nullptr){ //check if the node is null
-        return 0;
+        return -1;
     }
     int left = findHeight(node->left); //height of the left subtree
     int right = findHeight(node->right); //hieght of the right subtree
