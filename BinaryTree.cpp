@@ -22,7 +22,6 @@ void BinaryTree::destroyTree(TreeNode* node){
     destroyTree(node->left); //delete left child node
     destroyTree(node->right); //delete right child node
     delete node; //delete the current node
-    root = nullptr;
 }
 
 void BinaryTree::insert(int value){
