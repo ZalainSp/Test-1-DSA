@@ -24,12 +24,21 @@ void BinaryTree::destroyTree(TreeNode* node){
 }
 
 void BinaryTree::insert(int value){
+    insert(root, value); //call the private helper function to insert the value into the tree
+}
+
+void BinaryTree::insert(TreeNode*& node, int value){ //private helper function
 
     if(root == nullptr){
         root = new TreeNode(value);  //create new node if tree is empty
         return;
     }
-    
+    if(value<root->value){ //check if value is less, if so go to left subtree
+        insert(root->left,value);
+    }else if(value>root->value){ //check if value is greater, if so go to right subtree
+        insert(root->right,value);
+    }
+
 }
 
 bool BinaryTree::search(int value) const{
