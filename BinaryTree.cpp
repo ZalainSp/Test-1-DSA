@@ -47,10 +47,39 @@ bool BinaryTree::search(int value) const{
 
 }
 
-void BinaryTree::deleteNode(int value){
 
+void BinaryTree::deleteNode(int value){ //delete node function
+
+    deleteNode(root,value); //call the private helper function to delete the node
     
 }
+
+void BinaryTree::deleteNode(TreeNode*& node,  int value){
+
+    if(node == nullptr){ //check if the tree is empty
+        return;
+    }
+    if(value< node->value){ //check if value is less, if so go to left subtree
+        deleteNode(node->left,value) ; //call the private helper function to delete the node
+    }else if (value>node->value){ //check if value is greater, if so go to right subtree
+        deleteNode(node->right,value); //call the private helper function to delete the node
+    }else {
+        if(node->left == nullptr){ //check if left child node is null
+            TreeNode* temp = node;
+            node = node->right; //set the left child node as the new root
+            delete temp; //delete the old root
+}else if(node->right == nullptr){ //check if right child node is null
+    TreeNode* temp = node;
+    node = node->left; //set the left child node as the new root
+    delete temp; //delete the old root
+}else{
+TreeNode* temp = findMin(node->right);
+node->value = temp->value;
+deleteNode(node->right, temp->value);
+}
+}
+}
+
 
 void BinaryTree::inorderTraversal() const{ // call the private helper function
 
@@ -172,4 +201,13 @@ int BinaryTree::findHeight(TreeNode* node) const{
 }
 
 
+TreeNode* BinaryTree::findMin(TreeNode* node) const{ //private helper function to find the minimum value in the tree
+    if(node == nullptr){ //check if the node is null
+        return nullptr;
+    }
+    while(node->left != nullptr){ //while the left child node is not null
+        node = node->left; //go to the left child node
+    }
+    return node; //return the minimum value in the tree
+}
 

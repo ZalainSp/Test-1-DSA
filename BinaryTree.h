@@ -26,13 +26,14 @@ public:
     void levelOrderTraversal() const;
     int count() const;
     int findHeight() const;
+    int findMin() const;
 
 private:
     TreeNode* root;
 
     void insert(TreeNode*& node, int value);
     bool search(TreeNode* node, int value) const;
-    TreeNode* deleteNode(TreeNode* node, int value);
+    void deleteNode(TreeNode* node, int value);
     void inorderTraversal(TreeNode* node) const;
     void preorderTraversal(TreeNode* node) const;
     void postorderTraversal(TreeNode* node) const;
@@ -40,6 +41,7 @@ private:
     int count(TreeNode* node) const;
     int findHeight(TreeNode* node) const;
     void destroyTree(TreeNode* node);
+    TreeNode* findMin(TreeNode* node) const;
 
 };
 
