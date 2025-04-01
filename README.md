@@ -27,4 +27,5 @@ If a root has 2 children it is replaced by the smallest child in the right subtr
 Inserting duplicates is not allowed.
 You cannot delete non existent values.
 
-https://youtu.be/kJNXr0bSvOg
+https://youtu.be/kJNXr0bSvOg //Code demo
+https://youtu.be/-lTBVLa8uHk //Tree traversal
